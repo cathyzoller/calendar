@@ -1,6 +1,6 @@
 {
   "name": "rc-calendar",
-  "version": "7.0.2",
+  "version": "7.0.3",
   "description": "React Calendar",
   "keywords": [
     "react",
@@ -16,14 +16,14 @@
     "assets/*.css"
   ],
   "main": "lib/index",
-  "homepage": "http://github.com/react-component/calendar",
+  "homepage": "http://github.com/cathyzoller/calendar",
   "author": "yiminghe@gmail.com",
   "repository": {
     "type": "git",
-    "url": "git@github.com:react-component/calendar.git"
+    "url": "git@github.com:cathyzoller/calendar.git"
   },
   "bugs": {
-    "url": "http://github.com/react-component/calendar/issues"
+    "url": "http://github.com/cathyzoller/calendar/issues"
   },
   "licenses": "MIT",
   "config": {
