@@ -3,7 +3,7 @@ webpackJsonp([4],{
 /***/ 0:
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(374);
+	module.exports = __webpack_require__(376);
 
 
 /***/ },
@@ -2571,7 +2571,7 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 374:
+/***/ 376:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2594,11 +2594,11 @@ webpackJsonp([4],{
 	
 	var _Picker2 = _interopRequireDefault(_Picker);
 	
-	var _rcDialog = __webpack_require__(375);
+	var _rcDialog = __webpack_require__(377);
 	
 	var _rcDialog2 = _interopRequireDefault(_rcDialog);
 	
-	__webpack_require__(379);
+	__webpack_require__(381);
 	
 	var _zh_CN = __webpack_require__(324);
 	
@@ -2713,16 +2713,16 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 375:
+/***/ 377:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
-	module.exports = __webpack_require__(376);
+	module.exports = __webpack_require__(378);
 
 /***/ },
 
-/***/ 376:
+/***/ 378:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2739,7 +2739,7 @@ webpackJsonp([4],{
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Dialog = __webpack_require__(377);
+	var _Dialog = __webpack_require__(379);
 	
 	var _Dialog2 = _interopRequireDefault(_Dialog);
 	
@@ -2803,7 +2803,7 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 377:
+/***/ 379:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2832,7 +2832,7 @@ webpackJsonp([4],{
 	
 	var _rcAnimate2 = _interopRequireDefault(_rcAnimate);
 	
-	var _LazyRenderBox = __webpack_require__(378);
+	var _LazyRenderBox = __webpack_require__(380);
 	
 	var _LazyRenderBox2 = _interopRequireDefault(_LazyRenderBox);
 	
@@ -2904,6 +2904,7 @@ webpackJsonp([4],{
 	    visible: _react.PropTypes.bool,
 	    mousePosition: _react.PropTypes.object,
 	    wrapStyle: _react.PropTypes.object,
+	    maskStyle: _react.PropTypes.object,
 	    prefixCls: _react.PropTypes.string,
 	    wrapClassName: _react.PropTypes.string
 	  },
@@ -3092,13 +3093,16 @@ webpackJsonp([4],{
 	  getWrapStyle: function getWrapStyle() {
 	    return (0, _extends3["default"])({}, this.getZIndexStyle(), this.props.wrapStyle);
 	  },
+	  getMaskStyle: function getMaskStyle() {
+	    return (0, _extends3["default"])({}, this.getZIndexStyle(), this.props.maskStyle);
+	  },
 	  getMaskElement: function getMaskElement() {
 	    var props = this.props;
 	    var maskElement = void 0;
 	    if (props.mask) {
 	      var maskTransition = this.getMaskTransitionName();
 	      maskElement = _react2["default"].createElement(_LazyRenderBox2["default"], {
-	        style: this.getZIndexStyle(),
+	        style: this.getMaskStyle(),
 	        key: 'mask',
 	        className: props.prefixCls + '-mask',
 	        hiddenClassName: props.prefixCls + '-mask-hidden',
@@ -3247,7 +3251,7 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 378:
+/***/ 380:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3295,7 +3299,7 @@ webpackJsonp([4],{
 
 /***/ },
 
-/***/ 379:
+/***/ 381:
 2
 
 });

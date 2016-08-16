@@ -2836,6 +2836,10 @@ webpackJsonp([2],{
 	
 	var _TimePickerButton2 = _interopRequireDefault(_TimePickerButton);
 	
+	var _SingleDayCheckbox = __webpack_require__(346);
+	
+	var _SingleDayCheckbox2 = _interopRequireDefault(_SingleDayCheckbox);
+	
 	var _CommonMixin = __webpack_require__(286);
 	
 	var _CommonMixin2 = _interopRequireDefault(_CommonMixin);
@@ -2894,6 +2898,10 @@ webpackJsonp([2],{
 	  if (this.state.showTimePicker && selectedValue[0] && !selectedValue[1]) {
 	    selectedValue[1] = selectedValue[0];
 	  }
+	  if (selectedValue[0] && this.state.singleDay) {
+	    selectedValue[1] = selectedValue[0];
+	  }
+	
 	  this.fireSelectValueChange(selectedValue);
 	}
 	
@@ -2907,6 +2915,8 @@ webpackJsonp([2],{
 	    timePicker: _react.PropTypes.any,
 	    value: _react.PropTypes.any,
 	    showOk: _react.PropTypes.bool,
+	    showSingleDay: _react.PropTypes.bool,
+	    singleDay: _react.PropTypes.bool,
 	    selectedValue: _react.PropTypes.array,
 	    defaultSelectedValue: _react.PropTypes.array,
 	    onOk: _react.PropTypes.func,
@@ -2924,17 +2934,20 @@ webpackJsonp([2],{
 	  getDefaultProps: function getDefaultProps() {
 	    return {
 	      defaultSelectedValue: [],
-	      onValueChange: noop
+	      onValueChange: noop,
+	      showSingleDay: true
 	    };
 	  },
 	  getInitialState: function getInitialState() {
 	    var props = this.props;
+	    var singleDay = props.singleDay || false;
 	    var selectedValue = props.selectedValue || props.defaultSelectedValue;
 	    var value = normalizeAnchor(props, 1);
 	    return {
 	      selectedValue: selectedValue,
 	      value: value,
-	      showTimePicker: false
+	      showTimePicker: false,
+	      singleDay: singleDay
 	    };
 	  },
 	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
@@ -2966,6 +2979,11 @@ webpackJsonp([2],{
 	    } else if (this.compare(selectedValue[0], value) > 0) {
 	      selectedValue.length = 1;
 	      selectedValue[0] = value;
+	      changed = true;
+	    }
+	    if (this.state.singleDay && selectedValue.length === 1) {
+	      selectedValue.length = 2;
+	      selectedValue[1] = selectedValue[0];
 	      changed = true;
 	    }
 	    if (changed) {
@@ -3002,6 +3020,11 @@ webpackJsonp([2],{
 	  },
 	  onOk: function onOk() {
 	    this.props.onOk(this.state.selectedValue);
+	  },
+	  onSingleDayToggle: function onSingleDayToggle() {
+	    this.setState({
+	      singleDay: !this.state.singleDay
+	    });
 	  },
 	  getStartValue: function getStartValue() {
 	    var value = this.state.value;
@@ -3109,6 +3132,7 @@ webpackJsonp([2],{
 	    var dateInputPlaceholder = props.dateInputPlaceholder;
 	    var timePicker = props.timePicker;
 	    var showOk = props.showOk;
+	    var showSingleDay = props.showSingleDay;
 	    var locale = props.locale;
 	    var showClear = props.showClear;
 	
@@ -3197,6 +3221,11 @@ webpackJsonp([2],{
 	            onToday: this.onToday,
 	            text: locale.backToToday
 	          })),
+	          !!showSingleDay ? _react2.default.createElement(_SingleDayCheckbox2.default, (0, _extends3.default)({}, props, {
+	            prefixCls: prefixCls,
+	            singleDay: this.state.singleDay,
+	            onSingleDayToggle: this.onSingleDayToggle
+	          })) : null,
 	          !!props.timePicker ? _react2.default.createElement(_TimePickerButton2.default, (0, _extends3.default)({}, props, {
 	            showTimePicker: showTimePicker,
 	            onOpenTimePicker: this.onOpenTimePicker,
@@ -3518,6 +3547,58 @@ webpackJsonp([2],{
 	});
 	
 	exports.default = CalendarPart;
+	module.exports = exports['default'];
+
+/***/ },
+
+/***/ 346:
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(3);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var SingleDayCheckbox = _react2.default.createClass({
+	  displayName: "SingleDayCheckbox",
+	
+	  propTypes: {
+	    prefixCls: _react.PropTypes.string,
+	    singleDay: _react.PropTypes.bool,
+	    onSingleDayToggle: _react.PropTypes.func
+	  },
+	
+	  render: function render() {
+	    var _this = this;
+	
+	    return _react2.default.createElement(
+	      "div",
+	      null,
+	      _react2.default.createElement("input", { type: "checkbox",
+	        className: this.props.prefixCls + "-single-day-checkbox",
+	        role: "checkbox",
+	        checked: this.props.singleDay,
+	        onChange: function onChange() {
+	          _this.props.onSingleDayToggle();
+	        }
+	      }),
+	      _react2.default.createElement(
+	        "label",
+	        { className: this.props.prefixCls + "-single-day-checkbox-label" },
+	        "Single-day Event"
+	      )
+	    );
+	  }
+	});
+	
+	exports.default = SingleDayCheckbox;
 	module.exports = exports['default'];
 
 /***/ }

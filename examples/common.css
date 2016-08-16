@@ -1074,6 +1074,15 @@
 .rc-calendar-range .rc-calendar-today-btn {
   float: left;
 }
+.rc-calendar-range .rc-calendar-single-day-checkbox-label {
+  float: left;
+  margin-left: 5px;
+}
+.rc-calendar-range .rc-calendar-single-day-checkbox {
+  float: left;
+  margin-left: 20px;
+  margin-top: 2px;
+}
 .rc-calendar-full {
   width: 275px;
 }
